@@ -240,8 +240,8 @@ JSX 없이 작성한 컴포넌트 입니다.
 <body>
   <div id="app"></div>
   <script type="text/babel">
-    var app = <h1>Hello world</h1>
-    var mountComponent = document.querySelector('#app');
+    const app = <h1>Hello world</h1>
+    const mountComponent = document.querySelector('#app');
     ReactDOM.render(app, mountComponent);
   </script>
 </body>
