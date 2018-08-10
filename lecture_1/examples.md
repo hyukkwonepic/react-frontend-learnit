@@ -1,6 +1,21 @@
+# 리액트 입문
+
+## 목차
+
+- [ES6](#es6)
+  - [let 과 const](#let-과-const)
+  - [forEach, map](#foreach-map)
+  - [화살표 함수 (Arrow function)](#화살표-함수-arrow-function)
+  - [class](#class)
+  - [전개 연산자](#전개-연산자)
+  - [객체 줄여쓰기](#객체-줄여쓰기)
+- [컴포넌트 작성하기](#컴포넌트-작성하기)
+- [챌린지: 컴포넌트 작성하기](#챌린지-컴포넌트-작성하기)
+- [챌린지: 컴포넌트 분리하기](#챌린지-컴포넌트-분리하기)
+
 ## ES6
 
-## let 과 const
+### let 과 const
 
 ```
 var name = 'alex';
@@ -12,41 +27,41 @@ var address = 'Seoul';
 const name = 'alex';
 let age = '26';
 let address = 'Seoul';
-
-// `let`은 할당 가능, `const`는 할당 불가능
 ```
+`let`은 선언 후 할당이 가능하고 `const`는 새로운 값을 할당할 수 없습니다.
 
 ```
-function () {
-  var year = '2018';
+var x = 1;
 
-  {
-    var year = '2019';
-    console.log(year); // 2019
-  }
-  
-  console.log(year); // 2019
+if (x === 1) {
+  var x = 2;
+
+  console.log(x);
+  // expected output: 2
 }
 
-// `var`는 function 스코프(scope).
+console.log(x);
+// expected output: 2
 ```
+`var`는 function 스코프(scope)에서 변수를 선언합니다.
 
 ```
-function () {
-  let year = '2018';
+let x = 1;
 
-  {
-    let year = '2019';
-    console.log(year); // 2019
-  }
+if (x === 1) {
+  let x = 2;
 
-  console.log(year); // 2018
+  console.log(x);
+  // expected output: 2
 }
 
-// `const`, `let`은 block 스코프(scope).
+console.log(x);
+// expected output: 1
 ```
+`const`, `let`은 block 스코프(scope)에서 변수를 선언합니다.
 
-## forEach, map
+
+### forEach, map
 
 ```
 const before = [ 1, 2, 3, 4, 5 ];
@@ -57,9 +72,8 @@ before.forEach((item) => {
 });
 
 console.log(after); // [ 2, 4, 6, 8, 10 ];
-
-// forEach는 Array를 루프를 돌면서 작업을 수행. 각 요소는 함수의 첫번째 인자 item.
 ```
+forEach는 Array를 루프를 돌면서 작업을 수행합니다. 각 요소는 함수의 첫번째 인자 item입니다.
 
 ```
 const before = [ 1, 2, 3, 4, 5 ];
@@ -69,11 +83,10 @@ const after = before.map((item) => {
 });
 
 console.log(after); // [ 2, 4, 6, 8, 10 ];
-
-// map은 Array를 루프를 돌면서 작업을 수행하고 새로운 Array를 생성.
 ```
+map은 Array를 루프를 돌면서 작업을 수행하고 새로운 Array를 생성합니다.
 
-## 화살표 함수 (Arrow function)
+### 화살표 함수 (Arrow function)
 
 ```
 // 일반적인 함수
@@ -91,11 +104,10 @@ const square = (input) => input * input;
 const square = (input) => {
   return input * input;
 }
-
-// 중괄호 없이 작성하면 return 됨
 ```
+화살표 함수에서는 중괄호를 작성하지 않으면 선언문이 return 됩니다.
 
-## class
+### class
 
 ```
 class Animal {
@@ -109,6 +121,8 @@ const doggy = new Animal('멍뭉이', 'dog');
 console.log(doggy.name) // 멍뭉이
 console.log(doggy.type) // dog
 ```
+
+`class`를 사용하여 클래스를 선언합니다.
 
 ```
 // 클래스 상속
@@ -125,11 +139,11 @@ console.log(birdy.name); // 짹짹이
 console.log(birdy.type); // bird
 ```
 
-## 전개 연산자
+`class ... extends`로 클래스를 상속할 수 있습니다.
+
+### 전개 연산자
 
 ```
-// 객체의 속성값을 변수명으로 하여 값 할당
-
 const obj = {
   a: '1',
   b: '2', 
@@ -143,10 +157,9 @@ console.log(b); // 2
 console.log(c); // 3
 
 ```
+객체의 속성명을 변수명으로 선언하고 값을 할당합니다.
 
 ```
-// Array의 값을 변수로 할당
-
 const list = [ 1, 2, 3, 4, 5, 6 ];
 const [ a, b, ...rest ] = list;
 
@@ -154,8 +167,10 @@ console.log(a); // 1
 console.log(b); // 2
 console.log(rest); // [ 3, 4, 5, 6 ]
 ```
+Array의 값을 변수에 할당합니다.
 
-## 객체 줄여쓰기
+
+### 객체 줄여쓰기
 
 ```
 const name = 'alex';
@@ -170,9 +185,6 @@ const obj = {
 ```
 
 ```
-
-// 객체의 속성과 속성에 지정하는 값의 변수명이 같으면 줄여쓸 수 있음
-
 const name = 'alex';
 const age = '26';
 const address = 'seoul';
@@ -184,11 +196,11 @@ const obj = {
 }
 ```
 
+객체의 속성과 속성에 지정하는 값의 변수명이 같으면 줄여서 작성할 수 있습니다.
+
 ## 컴포넌트 작성하기
 
 ```
-// JSX를 사용해 작성한 컴포넌트
-
 class HelloWorld extends React.Component {
   render() {
     return (
@@ -197,9 +209,9 @@ class HelloWorld extends React.Component {
   }
 }
 ```
+JSX를 사용해 작성한 컴포넌트입니다.
 
 ```
-// JSX 없이 작성한 컴포넌트
 class HelloWorld extends React.Component {
   render() {
     return (
@@ -212,9 +224,9 @@ class HelloWorld extends React.Component {
   }
 }
 ```
+JSX 없이 작성한 컴포넌트 입니다.
 
 ```
-<!-- HTML 스크립트 위에 리액트 작성하기 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -235,9 +247,9 @@ class HelloWorld extends React.Component {
 </body>
 </html>
 ```
+HTML 스크립트 위에 리액트 컴포넌트를 작성할 수 있습니다. 리액트 패키지와 babel 패키지를 script로 삽입합니다. 그 후 새로운 script 태그 내부에 리액트 코드를 작성합니다.
 
 ```
-<!-- <App /> 컴포넌트 작성 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -261,6 +273,8 @@ class HelloWorld extends React.Component {
 </body>
 </html>
 ```
+<App /> 컴포넌트를 작성했습니다.
+
 
 ## 챌린지: 컴포넌트 작성하기
 
@@ -283,6 +297,8 @@ class App extends React.Component {
   }
 }
 ```
+
+위의 컴포넌트에서, 각 위치에 알맞은 엘리먼트를 사용하여 컴포넌트를 완성해 주세요.
 
 ```
 // solution
@@ -331,6 +347,9 @@ class App extends React.Component {
   }
 }
 ```
+
+이전 챌린지의 코드에 이어, `ul` 요소의 영역을 `Profile`이라는 새로운 컴포넌트로 분리하여 작성해 주세요.
+
 ```
 // solution
 
