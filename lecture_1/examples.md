@@ -183,3 +183,179 @@ const obj = {
   address
 }
 ```
+
+## 컴포넌트 작성하기
+
+```
+// JSX를 사용해 작성한 컴포넌트
+
+class HelloWorld extends React.Component {
+  render() {
+    return (
+      <h1 className='large'>Hello World</h1>
+    );
+  }
+}
+```
+
+```
+// JSX 없이 작성한 컴포넌트
+class HelloWorld extends React.Component {
+  render() {
+    return (
+      React.createElement(
+        'h1',
+        {className: 'large'},
+        'Hello World'
+      )
+    );
+  }
+}
+```
+
+```
+<!-- HTML 스크립트 위에 리액트 작성하기 -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Hello world</title>
+  <!-- Script tags including React -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="text/babel">
+    var app = <h1>Hello world</h1>
+    var mountComponent = document.querySelector('#app');
+    ReactDOM.render(app, mountComponent);
+  </script>
+</body>
+</html>
+```
+
+```
+<!-- <App /> 컴포넌트 작성 -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Hello world</title>
+  <!-- Script tags including React -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="text/babel">
+    class App extends React.Component {
+      render() {
+        return <h1>Hello from our app</h1>
+      }
+    }
+    ReactDOM.render(<App />, document.querySelector('#app'));
+  </script>
+</body>
+</html>
+```
+
+## 챌린지: 컴포넌트 작성하기
+
+```
+// challenge
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>자기소개</h1>
+        // img src
+        // span 한줄 소개
+        // ul
+          // li 이름
+          // li 사는 동네
+          // li 회사, 학교 동네
+      </div>
+    );
+  }
+}
+```
+
+```
+// solution
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>자기소개</h1>
+        <img src="https://scontent-icn1-1.xx.fbcdn.net/v/t31.0-8/16665220_1341861682536945_6515544790253936304_o.jpg?_nc_cat=0&oh=d9729f1dd5c1239d01c7ea6ff53e4bbb&oe=5C0A254B" />
+        <span>저는 주짓수를 즐겨합니다.</span>
+        <ul>
+          <li>이름: 권혁우</li>
+          <li>사는 동네: 서울 강북구</li>
+          <li>회사 동네: 내가 있는 모든 곳!</li>
+        </ul>
+      </div>
+    );
+  }
+}
+```
+
+## 챌린지: 컴포넌트 분리하기
+
+```
+// challenge
+
+class Profile extends React.Component {
+  render() {
+    return (
+      ...
+    )
+  }
+}
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>자기소개</h1>
+        <img src="https://scontent-icn1-1.xx.fbcdn.net/v/t31.0-8/16665220_1341861682536945_6515544790253936304_o.jpg?_nc_cat=0&oh=d9729f1dd5c1239d01c7ea6ff53e4bbb&oe=5C0A254B" />
+        <span>저는 주짓수를 즐겨합니다.</span>
+        // Profile
+      </div>
+    );
+  }
+}
+```
+```
+// solution
+
+class Profile extends React.Component {
+  render() {
+    return (
+      <ul>
+        <li>이름: 권혁우</li>
+        <li>사는 동네: 서울 강북구</li>
+        <li>회사 동네: 내가 있는 모든 곳!</li>
+      </ul>
+    )
+  }
+}
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>자기소개</h1>
+        <img src="https://scontent-icn1-1.xx.fbcdn.net/v/t31.0-8/16665220_1341861682536945_6515544790253936304_o.jpg?_nc_cat=0&oh=d9729f1dd5c1239d01c7ea6ff53e4bbb&oe=5C0A254B" />
+        <span>저는 주짓수를 즐겨합니다.</span>
+        <Profile />
+      </div>
+    );
+  }
+}
+```
