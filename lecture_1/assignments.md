@@ -3,7 +3,10 @@
 ## 복습
 
 - ES6 문법 익히기
-- 교재 읽기 => `2-1 리액트의 기본적인 사용법` 부터 `2.4 리액트로 컴포넌트 만들기`
+  - https://poiemaweb.com/
+  - https://www.codecademy.com/learn/introduction-to-javascript
+- 교재 읽기 
+  - `2-1 리액트의 기본적인 사용법` 부터 `2.4 리액트로 컴포넌트 만들기`
 
 ## 과제
 
@@ -25,6 +28,7 @@ let hobbies = [ '영화 감상', '게임' ];
 2. Array 데이터 조작하기
 
 - 주어진 array `alphabet`의 내용 중 모음(a, e, i, o, u)인 것만 `console.log()`를 활용하여 출력하는 코드를 작성합니다.
+- `forEach` 또는 `map`을 활용할 수 있습니다.
 
 ```
 const alphabet = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ];
@@ -33,7 +37,7 @@ const alphabet = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', '
 3. 함수 리팩토링
 
 - 다음의 함수 `messageGenerator`를 화살표 함수로 변형하여 표현합니다.
-- 템플릿 리터럴(https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)을 참고해 작성할 수 있습니다.
+- 템플릿 리터럴(https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)을 사용했습니다.
 
 ```
 function messageGenerator ({ name, address }) {
@@ -152,8 +156,9 @@ const person = {
 
 ## 해야할 것
 
-- node & npm 설치하기 => https://nodejs.org/en/
+- node & npm 설치하기
+  - https://nodejs.org/en/
 - 원하는 에디터 설치하기
-  - [VS code](https://code.visualstudio.com/)
+  - [VS Code](https://code.visualstudio.com/)
   - [Atom](https://atom.io/)
   - [Sublime Text](https://www.sublimetext.com/)
