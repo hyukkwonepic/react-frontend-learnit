@@ -12,7 +12,7 @@
 
 - to-do 앱 만들기
   - 데모: https://codesandbox.io/s/vn60ovpn05
-  - create-react-app으로 프로젝트 생성 후 구현하기
+  - create-react-app으로 프로젝트 생성하거나 https://codesandbox.io/ 에서 새 리액트 앱 생성 후 구현하셔도 됩니다!
   - lecture_2/to-do/ 의 코드를 참고하며 구현해 주세요
 - 노트앱 만들기
   - 데모: http://simplenote-react.surge.sh/
