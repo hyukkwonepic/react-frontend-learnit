@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 class Info extends React.Component {
   componentDidUpdate(prevProps, prevState) {
@@ -69,5 +70,9 @@ const Descriptions = styled.div`
     color: #333;
   }
 `;
+
+Info.propTypes = {
+  pokemon: PropTypes.object.isRequired,
+}
 
 export default Info;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Input = (props) => {
   const { value, onChange, onSearch } = props;
@@ -40,5 +41,11 @@ const Wrapper = styled.div`
     cursor: pointer;
   }
 `;
+
+Input.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onSearch: PropTypes.func.isRequired,
+}
 
 export default Input;
