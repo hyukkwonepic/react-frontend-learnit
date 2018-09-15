@@ -26,8 +26,7 @@ class Board extends React.Component {
     const boardsSnapshot = await db.collection('boards').get();
     
     const boards = boardsSnapshot.docs.map((snapshot) => {
-      const { id, name } = snapshot.data();
-      return { id, name };
+      return snapshot.data();
     });
 
     const activeBoardId = boards[0].id;

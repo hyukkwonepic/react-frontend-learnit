@@ -12,7 +12,6 @@ class Navbar extends React.Component {
           {
             boards.map((board) => {
               const { id, name } = board;
-              // const isActive = id === activeBoardId;
               const isActive = pathname.includes(`/board/${id}`);
               return (
                 <List key={id} isActive={isActive}>
