@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+// <Router />로 렌더링 되지 않는 컴포넌트는 history에 접근할 수 없기 때문에 withRouter를 활용합니다
 import { withRouter } from 'react-router-dom';
 
 class PostItem extends React.Component {
+  // 최상위 엘리먼트 클릭 시 라우팅
   handleClick = () => {
     const { history, match, post, isDetail } = this.props;
     if (!isDetail) {
+      // 리스트에서 클릭 시 PostDetail 로 라우팅
       history.push(`${match.url}/${post.id}`);
     }
   }
@@ -73,4 +76,5 @@ const CommentCount = styled.div`
   color: #999;
 `;
 
+// PostItem 컴포넌트를 withRouter로 감쌉니다
 export default withRouter(PostItem);

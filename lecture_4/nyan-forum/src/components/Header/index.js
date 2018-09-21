@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+// <Router />로 렌더링 되지 않는 컴포넌트는 history에 접근할 수 없기 때문에 withRouter를 활용합니다
 import {
   withRouter,
   Link
@@ -8,6 +9,7 @@ import {
 class Header extends React.Component {
   render() {
     const { pathname } = this.props.location;
+    // 현재 pathname을 통해 '댓글 쓰기' 또는 '글 쓰기'의 렌더링 판단합니다
     const postId = pathname.split('/')[3];
     const isCreate = pathname.includes('/create');
     return (
@@ -55,4 +57,5 @@ const Action = styled.div`
   }
 `;
 
+// Navbar 컴포넌트를 withRouter로 감쌉니다
 export default withRouter(Header);

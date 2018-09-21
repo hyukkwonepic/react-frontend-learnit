@@ -7,6 +7,7 @@ import Button from '../../components/Button';
 
 class Landing extends React.Component {
   handleEnter = () => {
+    // 입장하기 클릭 시 /board로 라우팅합니다
     this.props.history.push('/board');
   }
   render() {

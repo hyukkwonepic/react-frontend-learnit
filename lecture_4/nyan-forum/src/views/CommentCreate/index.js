@@ -17,6 +17,8 @@ class CommentCreate extends React.Component {
     });
   }
 
+  // 새 comment 생성하기
+  // PostCreate의 handleSubmit과 비슷한 로직을 담고있습니다
   handleSubmit = async (e) => {
     e.preventDefault();
     const confirm = window.confirm('정말로 등록하시겠습니까?');
@@ -25,16 +27,18 @@ class CommentCreate extends React.Component {
       const { postId } = this.props.match.params;
       const { author, content } = this.state;
 
+      // comments 컬렉션에 새로운 document의 reference를 생성합니다
       const newCommentRef = db.collection('comments').doc();
-      await newCommentRef.set({
+      await newCommentRef.set({ // 새 document를 생성합니다
         id: newCommentRef.id,
         author,
         content,
       });
 
+      // 새 comment를 생성했기 때문에, 해당 comment를 post의 comments에 추가해야 합니다
       const postSnapshot = await db.collection('posts').doc(postId).get();
       const commentsByPost = postSnapshot.data().comments;
-      await db.collection('posts').doc(postId).update({
+      await db.collection('posts').doc(postId).update({ // 해당 post document를 업데이트합니다
         comments: [
           ...commentsByPost,
           newCommentRef.id

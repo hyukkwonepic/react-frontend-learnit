@@ -18,35 +18,42 @@ class BoardCreate extends React.Component {
     });
   }
 
+  // 새 post 생성하기
   handleSubmit = async (e) => {
+    // form 태그 내부에 button을 클릭하면 자동으로 요청을 생성하게 되므로 기본 행동을 preventDefault() 메소드로 취소합니다.
     e.preventDefault();
-    const confirm = window.confirm('정말로 등록하시겠습니까?');
+    const confirm = window.confirm('정말로 등록하시겠습니까?'); // 컨펌 메시지를 표출하고, 그 결과를 confirm에 boolean값으로 할당합니다
 
-    if (confirm) {
+    if (confirm) { // 만약 confirm이 true일 경우
+      // 현재 url의 boardId를 가져옵니다
       const { boardId } = this.props.match.params;
       const { author, title, content } = this.state;
   
-      // 
+      // posts 컬렉션에 새로운 document의 reference를 생성합니다
       const newPostRef = db.collection('posts').doc();
-      await newPostRef.set({
-        id: newPostRef.id,
+      
+      // 유저가 입력한 값을 통해 새로운 document를 생성합니다
+      await newPostRef.set({ // set() 메소드를 통해 새 document를 생성합니다
+        id: newPostRef.id, // reference의 id를 id에 할당할 수 있습니다
         author,
         title,
         content,
         comments: []
       });
   
+      // 새 post를 생성했기 때문에, 해당 post를 boards의 posts에 추가해야합니다.
+      // boardId를 통해 db의 boards 컬렉션에서 해당 document를 가져옵니다 => documentSnapshot이 반환됩니다
       const boardSnapshot = await db.collection('boards').doc(boardId).get();
       const postsByBoard = boardSnapshot.data().posts;
-      await db.collection('boards').doc(boardId).update({
+      await db.collection('boards').doc(boardId).update({ // update() 메소드를 통해 해당 board document를 업데이트합니다
         posts: [
           ...postsByBoard,
-          newPostRef.id
+          newPostRef.id // 새 post의 id를 추가합니다
         ]
       });
   
       alert('성공적으로 등록되었습니다');
-      this.props.history.goBack();
+      this.props.history.goBack(); // 새 post 완료 후 이전 페이지로 돌아갑니다. 이때 history.goBack() 메소드를 활용할 수 있습니다.
     }
   }
 

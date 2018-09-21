@@ -1,4 +1,5 @@
 import React from 'react';
+// <Router />로 렌더링 되지 않는 컴포넌트는 history에 접근할 수 없기 때문에 withRouter를 활용합니다
 import { withRouter, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -12,6 +13,7 @@ class Navbar extends React.Component {
           {
             boards.map((board) => {
               const { id, name } = board;
+              // 현재 pathname과 id를 비교하여 활성화 여부를 판단합니다.
               const isActive = pathname.includes(`/board/${id}`);
               return (
                 <List key={id} isActive={isActive}>
@@ -46,5 +48,5 @@ const List = styled.li`
   }
 `;
 
-
+// Navbar 컴포넌트를 withRouter로 감쌉니다
 export default withRouter(Navbar);
