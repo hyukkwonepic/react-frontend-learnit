@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { db } from '../../firebase';
+import { connect } from 'react-redux';
 
 import Button from '../../components/Button';
+
+import { createPost } from './actions';
 
 class BoardCreate extends React.Component {
 
@@ -23,27 +25,16 @@ class BoardCreate extends React.Component {
     const confirm = window.confirm('정말로 등록하시겠습니까?');
 
     if (confirm) {
-      const { boardId } = this.props.match.params;
+      const { dispatch, match } = this.props;
+      const { boardId } = match.params;
       const { author, title, content } = this.state;
   
-      const newPostRef = db.collection('posts').doc();
-      
-      await newPostRef.set({
-        id: newPostRef.id,
+      await dispatch(createPost({
+        boardId,
         author,
         title,
-        content,
-        comments: []
-      });
-  
-      const boardSnapshot = await db.collection('boards').doc(boardId).get();
-      const postsByBoard = boardSnapshot.data().posts;
-      await db.collection('boards').doc(boardId).update({
-        posts: [
-          ...postsByBoard,
-          newPostRef.id
-        ]
-      });
+        content
+      }));
   
       alert('성공적으로 등록되었습니다');
       this.props.history.goBack();
@@ -134,4 +125,4 @@ const Textarea = styled.textarea`
   padding: 1rem;
 `;
 
-export default BoardCreate;
+export default connect()(BoardCreate);
