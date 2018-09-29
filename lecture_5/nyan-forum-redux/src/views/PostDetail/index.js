@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import PostItem from '../../components/PostItem';
 import Comments from '../../components/Comments';
 
-import { fetchPostDetail } from './action';
+import { fetchPostDetail } from './actions';
 
 class PostDetail extends React.Component {
   componentDidMount() {
